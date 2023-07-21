@@ -2,6 +2,7 @@
   "name": "@react-native/expo-base-template",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
+  "author": "Matheus Henrique matheus.181137@gmail.com",
   "description": "Base template to speedup project bootstrap",
   "repository": {
     "type": "git",
