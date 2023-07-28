@@ -1,27 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { ThemeProvider } from 'styled-components';
-import { light } from './src/themes/light';
-import { NavigationContainer } from '@react-navigation/native';
+import { useFonts } from 'expo-font'
 
-export default function App() {
+import { NavigationContainer } from '@react-navigation/native';
+import { TamaguiProvider, YStack, Text } from 'tamagui';
+import config from './tamagui.config';
+
+export default function App(): JSX.Element | null {
+  const [loaded] = useFonts({
+    Inter: require('@tamagui/font-inter/otf/Inter-Medium.otf'),
+    InterBold: require('@tamagui/font-inter/otf/Inter-Bold.otf'),
+  })
+
+  if (!loaded) {
+    return null
+  }
   return (
     <NavigationContainer>
-      <ThemeProvider theme={light}>
-        <View style={styles.container}>
-          <Text>Open up App.js to start working on your app!</Text>
-          <StatusBar style="auto" />
-        </View>
-      </ThemeProvider>
+      <TamaguiProvider config={config}>
+        <YStack f={1}>
+          <Text color="$gray10">Hello</Text>
+        </YStack>
+        <StatusBar />
+      </TamaguiProvider>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
